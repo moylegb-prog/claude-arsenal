@@ -1,23 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140">
-  <!-- White background -->
   <rect width="400" height="140" fill="#ffffff"/>
-
-  <!-- PINP + O + INT - Centered at x=200 -->
-  <text x="45" y="65" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#0066cc">PINP</text>
-
-  <!-- Bullseye O -->
-  <g transform="translate(200, 45)">
-    <circle r="22" fill="#ffffff" stroke="#888888" stroke-width="2"/>
-    <circle r="16" fill="#cc0000"/>
-    <circle r="10" fill="#ffffff"/>
-    <circle r="4" fill="#cc0000"/>
+  <g transform="translate(200, 0)">
+    <text x="-155" y="60" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#0066cc">PINP</text>
+    <g transform="translate(0, 40)">
+      <circle r="22" fill="#ffffff" stroke="#888888" stroke-width="2"/>
+      <circle r="16" fill="#cc0000"/>
+      <circle r="10" fill="#ffffff"/>
+      <circle r="4" fill="#cc0000"/>
+    </g>
+    <text x="22" y="60" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#0066cc">INT</text>
+    <text x="0" y="95" font-family="Arial, sans-serif" font-size="20" font-weight="300" fill="#777777" text-anchor="middle" letter-spacing="8">ENGINEERING</text>
+    <text x="0" y="125" font-family="Arial, sans-serif" font-size="9" fill="#999999" text-anchor="middle">ST PETERS - SYDNEY - AUSTRALIA</text>
   </g>
-
-  <text x="222" y="65" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#0066cc">INT</text>
-
-  <!-- ENGINEERING - Centered -->
-  <text x="200" y="95" font-family="Arial, sans-serif" font-size="20" font-weight="300" fill="#777777" text-anchor="middle" letter-spacing="8">ENGINEERING</text>
-
-  <!-- Location - Centered -->
-  <text x="200" y="125" font-family="Arial, sans-serif" font-size="9" fill="#999999" text-anchor="middle" letter-spacing="1">ST PETERS · SYDNEY · AUSTRALIA</text>
 </svg>
