@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Arsenal - The Most Advanced Claude Code Setup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+            color: #e0e0e0;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER WITH LOGO */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .logo-container {
+            background: rgba(255, 255, 255, 0.95);
+            display: inline-block;
+            padding: 40px 60px;
+            border-radius: 16px;
+            box-shadow:
+                0 0 60px rgba(0, 102, 204, 0.3),
+                0 20px 60px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .logo-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blue-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 900;
+            color: #0066cc;
+            letter-spacing: 2px;
+        }
+
+        .bullseye {
+            width: 64px;
+            height: 64px;
+            position: relative;
+            margin: 0 2px;
+        }
+
+        .bullseye-ring {
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ring-outer { width: 64px; height: 64px; background: #fff; border: 3px solid #888; }
+        .ring-red { width: 46px; height: 46px; background: #cc0000; }
+        .ring-white { width: 28px; height: 28px; background: #fff; }
+        .ring-center { width: 12px; height: 12px; background: #cc0000; }
+
+        .engineering-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 300;
+            color: #666;
+            letter-spacing: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .location-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* ARSENAL TITLE */
+        .arsenal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00D4AA, #9B59B6, #FF6B9D, #00D4AA);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 5s ease infinite;
+            text-shadow: 0 0 60px rgba(155, 89, 182, 0.5);
+            margin-top: 30px;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.4em;
+            color: #00D4AA;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* STATS BADGES */
+        .badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .badge {
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .badge.agents { background: linear-gradient(135deg, #00D4AA, #00B894); color: #000; }
+        .badge.skills { background: linear-gradient(135deg, #FF6B9D, #E84393); color: #000; }
+        .badge.commands { background: linear-gradient(135deg, #4ECDC4, #44A08D); color: #000; }
+        .badge.mcps { background: linear-gradient(135deg, #9B59B6, #8E44AD); color: #fff; }
+        .badge.providers { background: linear-gradient(135deg, #F39C12, #E67E22); color: #000; }
+
+        /* AGENT CARDS */
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            color: #00D4AA;
+            margin: 60px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #00D4AA;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 8px;
+            height: 40px;
+            background: linear-gradient(180deg, #00D4AA, #9B59B6);
+            border-radius: 4px;
+        }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .agent-card {
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.9), rgba(15, 15, 26, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00D4AA, #9B59B6, #FF6B9D);
+        }
+
+        .agent-card:hover {
+            transform: translateY(-10px);
+            border-color: #9B59B6;
+            box-shadow:
+                0 20px 60px rgba(155, 89, 182, 0.3),
+                0 0 30px rgba(0, 212, 170, 0.2);
+        }
+
+        .agent-card.legendary {
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .agent-card.legendary::before {
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        .agent-tier {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-legendary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+        }
+
+        .tier-epic {
+            background: linear-gradient(135deg, #9B59B6, #8E44AD);
+            color: #fff;
+        }
+
+        .agent-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            border: 3px solid rgba(0, 212, 170, 0.5);
+            box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+        }
+
+        .agent-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .agent-codename {
+            font-family: monospace;
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .agent-class {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.2);
+            color: #00D4AA;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+
+        .agent-lore {
+            font-style: italic;
+            color: #888;
+            border-left: 3px solid #9B59B6;
+            padding-left: 15px;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .agent-abilities {
+            margin-top: 20px;
+        }
+
+        .ability {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .ability-name {
+            width: 140px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .ability-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ability-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #00D4AA, #4ECDC4);
+        }
+
+        /* INNOVATIONS */
+        .innovations-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .innovation-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 212, 170, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .innovation-item:hover {
+            background: rgba(0, 212, 170, 0.1);
+            border-color: #00D4AA;
+        }
+
+        .innovation-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+        }
+
+        .innovation-text h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00D4AA;
+            margin-bottom: 5px;
+        }
+
+        .innovation-text p {
+            color: #888;
+            font-size: 0.95em;
+        }
+
+        .innovation-status {
+            margin-left: auto;
+            background: #00D4AA;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85em;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-badge {
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .badge-australia {
+            background: #1a5f1a;
+            color: #fff;
+        }
+
+        .badge-claude {
+            background: #9B59B6;
+            color: #fff;
+        }
+
+        /* GLOWING EFFECTS */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 170, 0.6); }
+        }
+
+        .glow-pulse {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER WITH LOGO -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-main">
+                    <span class="blue-text">PINP</span>
+                    <div class="bullseye">
+                        <div class="bullseye-ring ring-outer"></div>
+                        <div class="bullseye-ring ring-red"></div>
+                        <div class="bullseye-ring ring-white"></div>
+                        <div class="bullseye-ring ring-center"></div>
+                    </div>
+                    <span class="blue-text">INT</span>
+                </div>
+                <div class="engineering-text">ENGINEERING</div>
+                <div class="location-text">ST PETERS · SYDNEY · AUSTRALIA</div>
+            </div>
+
+            <h1 class="arsenal-title">CLAUDE ARSENAL</h1>
+            <p class="subtitle">The Most Advanced Claude Code Setup Ever Built</p>
+        </header>
+
+        <!-- STATS BADGES -->
+        <div class="badges">
+            <span class="badge agents">85+ Agents</span>
+            <span class="badge skills">26 Skills</span>
+            <span class="badge commands">100+ Commands</span>
+            <span class="badge mcps">13 MCPs</span>
+            <span class="badge providers">4 AI Providers</span>
+        </div>
+
+        <!-- LEGENDARY AGENTS -->
+        <h2 class="section-title">LEGENDARY AGENTS</h2>
+        <div class="agent-grid">
+            <div class="agent-card legendary">
+                <span class="agent-tier tier-legendary">LEGENDARY</span>
+                <div class="agent-avatar glow-pulse">🏴‍☠️</div>
+                <h3 class="agent-name">D.B. COOPER</h3>
+                <div class="agent-codename">db-cooper</div>
+                <span class="agent-class">Infiltrator</span>
+                <p class="agent-lore">"The only unsolved hijacking in history. He vanished without a trace." Like his namesake, this agent escapes seemingly impossible situations.</p>
+                <div class="agent-abilities">
+                    <div class="ability">
+                        <span class="ability-name">Sandbox Escape</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 95%"></div></div>
+                    </div>
+                    <div class="ability">
+                        <span class="ability-name">PowerShell Bridge</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div class="ability">
+                        <span class="ability-name">Stealth Ops</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 90%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card legendary">
+                <span class="agent-tier tier-legendary">LEGENDARY</span>
+                <div class="agent-avatar glow-pulse">👸</div>
+                <h3 class="agent-name">QUEEN COORDINATOR</h3>
+                <div class="agent-codename">queen-coordinator</div>
+                <span class="agent-class">Sovereign</span>
+                <p class="agent-lore">"The sovereign orchestrator of hierarchical hive operations." Central command for all swarm operations, managing strategic decisions and resource allocation.</p>
+                <div class="agent-abilities">
+                    <div class="ability">
+                        <span class="ability-name">Swarm Command</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 100%"></div></div>
+                    </div>
+                    <div class="ability">
+                        <span class="ability-name">Resource Allocation</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 95%"></div></div>
+                    </div>
+                    <div class="ability">
+                        <span class="ability-name">Worker Coordination</span>
+                        <div class="ability-bar"><div class="ability-fill" style="width: 90%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EPIC AGENTS -->
+        <h2 class="section-title">EPIC TIER AGENTS</h2>
+        <div class="agent-grid">
+            <div class="agent-card">
+                <span class="agent-tier tier-epic">EPIC</span>
+                <div class="agent-avatar">🛡️</div>
+                <h3 class="agent-name">BYZANTINE COORDINATOR</h3>
+                <div class="agent-codename">byzantine-coordinator</div>
+                <span class="agent-class">Guardian</span>
+                <p class="agent-lore">"Trust no one. Verify everything." Implements Byzantine fault tolerance for distributed consensus.</p>
+            </div>
+
+            <div class="agent-card">
+                <span class="agent-tier tier-epic">EPIC</span>
+                <div class="agent-avatar">📜</div>
+                <h3 class="agent-name">RAFT MANAGER</h3>
+                <div class="agent-codename">raft-manager</div>
+                <span class="agent-class">Diplomat</span>
+                <p class="agent-lore">"One leader, unified vision." Manages leader election and log replication.</p>
+            </div>
+
+            <div class="agent-card">
+                <span class="agent-tier tier-epic">EPIC</span>
+                <div class="agent-avatar">🌐</div>
+                <h3 class="agent-name">GOSSIP COORDINATOR</h3>
+                <div class="agent-codename">gossip-coordinator</div>
+                <span class="agent-class">Messenger</span>
+                <p class="agent-lore">"Rumors spread fast. Truth spreads faster." Coordinates gossip-based consensus protocols.</p>
+            </div>
+
+            <div class="agent-card">
+                <span class="agent-tier tier-epic">EPIC</span>
+                <div class="agent-avatar">🧠</div>
+                <h3 class="agent-name">SAFLA NEURAL</h3>
+                <div class="agent-codename">safla-neural</div>
+                <span class="agent-class">Metacognitive</span>
+                <p class="agent-lore">"Self-Aware Feedback Loop Algorithm." Creates intelligent, memory-persistent AI systems with self-learning capabilities.</p>
+            </div>
+        </div>
+
+        <!-- KEY INNOVATIONS -->
+        <h2 class="section-title">KEY INNOVATIONS</h2>
+        <div class="innovations-grid">
+            <div class="innovation-item">
+                <span class="innovation-icon">🏗️</span>
+                <div class="innovation-text">
+                    <h4>Hive Mind Architecture</h4>
+                    <p>Queen-led collective intelligence with worker specialization</p>
+                </div>
+                <span class="innovation-status">✓ PRODUCTION</span>
+            </div>
+            <div class="innovation-item">
+                <span class="innovation-icon">🏴‍☠️</span>
+                <div class="innovation-text">
+                    <h4>D.B. Cooper Bridge</h4>
+                    <p>Sandbox escape agent for Windows PowerShell execution</p>
+                </div>
+                <span class="innovation-status">✓ PRODUCTION</span>
+            </div>
+            <div class="innovation-item">
+                <span class="innovation-icon">🛡️</span>
+                <div class="innovation-text">
+                    <h4>Byzantine Consensus</h4>
+                    <p>Fault-tolerant multi-agent agreement protocols</p>
+                </div>
+                <span class="innovation-status">✓ PRODUCTION</span>
+            </div>
+            <div class="innovation-item">
+                <span class="innovation-icon">🔀</span>
+                <div class="innovation-text">
+                    <h4>Multi-Provider Routing</h4>
+                    <p>Claude + GPT + Gemini + Grok unified orchestration</p>
+                </div>
+                <span class="innovation-status">✓ PRODUCTION</span>
+            </div>
+            <div class="innovation-item">
+                <span class="innovation-icon">⚡</span>
+                <div class="innovation-text">
+                    <h4>10+ Parallel Agents</h4>
+                    <p>Concurrent swarm execution with coordination</p>
+                </div>
+                <span class="innovation-status">✓ PRODUCTION</span>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <h3 style="font-family: 'Orbitron', sans-serif; color: #00D4AA; font-size: 1.5em;">PINPOINT ENGINEERING</h3>
+            <p style="color: #666; margin-top: 10px;">Saint Peters, Sydney, Australia</p>
+            <p style="color: #555; margin-top: 5px;">25 years manufacturing · CNC · AI Integration</p>
+            <div class="footer-badges">
+                <span class="footer-badge badge-australia">🇦🇺 Made in Australia</span>
+                <span class="footer-badge badge-claude">⚡ Powered by Claude</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

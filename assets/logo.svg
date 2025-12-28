@@ -1,37 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&amp;display=swap');
-      .blue-text { font-family: 'Montserrat', Arial Black, sans-serif; font-size: 72px; font-weight: 900; fill: #0066cc; }
-      .gray-text { font-family: 'Montserrat', Arial, sans-serif; font-size: 28px; font-weight: 300; fill: #777; letter-spacing: 12px; }
-      .location { font-family: 'Montserrat', Arial, sans-serif; font-size: 11px; fill: #999; letter-spacing: 2px; }
+      .blue-text { font-family: 'Arial Black', 'Montserrat', sans-serif; font-size: 60px; font-weight: 900; fill: #0066cc; }
+      .gray-text { font-family: 'Arial', 'Montserrat', sans-serif; font-size: 24px; font-weight: 300; fill: #777777; letter-spacing: 10px; }
+      .location { font-family: 'Arial', 'Montserrat', sans-serif; font-size: 10px; fill: #999999; letter-spacing: 2px; }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="200" fill="#ffffff"/>
+  <!-- White background -->
+  <rect width="500" height="180" fill="#ffffff"/>
 
-  <!-- PINP -->
-  <text x="50" y="95" class="blue-text">PINP</text>
+  <!-- PINP + Bullseye O + INT - CENTERED -->
+  <g transform="translate(250, 70)">
+    <!-- PINP -->
+    <text x="-175" y="0" class="blue-text" text-anchor="start">PINP</text>
 
-  <!-- Bullseye O -->
-  <g transform="translate(270, 60)">
-    <!-- Gray outer ring -->
-    <circle r="32" fill="#ffffff" stroke="#888888" stroke-width="3"/>
-    <!-- Red ring -->
-    <circle r="23" fill="#cc0000"/>
-    <!-- White ring -->
-    <circle r="14" fill="#ffffff"/>
-    <!-- Red center -->
-    <circle r="6" fill="#cc0000"/>
+    <!-- Bullseye O centered -->
+    <g transform="translate(-22, -22)">
+      <circle r="28" fill="#ffffff" stroke="#888888" stroke-width="2"/>
+      <circle r="20" fill="#cc0000"/>
+      <circle r="12" fill="#ffffff"/>
+      <circle r="5" fill="#cc0000"/>
+    </g>
+
+    <!-- INT -->
+    <text x="15" y="0" class="blue-text" text-anchor="start">INT</text>
   </g>
 
-  <!-- INT -->
-  <text x="310" y="95" class="blue-text">INT</text>
+  <!-- ENGINEERING - CENTERED -->
+  <text x="250" y="110" class="gray-text" text-anchor="middle">ENGINEERING</text>
 
-  <!-- ENGINEERING -->
-  <text x="115" y="135" class="gray-text">ENGINEERING</text>
-
-  <!-- Location -->
-  <text x="175" y="175" class="location">ST PETERS · SYDNEY · AUSTRALIA</text>
+  <!-- St Peters - as is -->
+  <text x="250" y="155" class="location" text-anchor="middle">ST PETERS · SYDNEY · AUSTRALIA</text>
 </svg>
