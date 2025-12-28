@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Pinpoint Engineering" width="400"/>
+  <img src="assets/logo.svg" alt="Pinpoint Engineering" width="500"/>
 </p>
 <p align="center">
   <img src="assets/banner.png" alt="Claude Arsenal Banner" width="100%"/>
